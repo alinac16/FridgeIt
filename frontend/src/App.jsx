@@ -2,7 +2,7 @@ import "./App.css";
 import { Page, Tabbar, Tab } from "react-onsenui";
 import StoragePage from "./components/StoragePage";
 import ListPage from "./components/ListPage";
-// import { useState } from "react";
+import React from "react";
 
 function App() {
   return (
