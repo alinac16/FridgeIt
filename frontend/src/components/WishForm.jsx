@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
 
-function ListForm({ addItem }) {
+function WishForm({ addItem }) {
   const [item, setItem] = useState({
     name: "",
     weight: 0,
@@ -44,4 +44,4 @@ function ListForm({ addItem }) {
   );
 }
 
-export default ListForm;
+export default WishForm;

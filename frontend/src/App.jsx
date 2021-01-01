@@ -1,7 +1,7 @@
 import "./App.css";
 import { Page, Tabbar, Tab } from "react-onsenui";
 import StoragePage from "./components/StoragePage";
-import ListPage from "./components/ListPage";
+import WishPage from "./components/WishPage";
 import React from "react";
 
 function App() {
@@ -24,13 +24,13 @@ function App() {
             },
             {
               content: (
-                <ListPage
-                  title="List"
+                <WishPage
+                  title="Wish"
                   active={activeIndex === 1}
                   tabbar={tabbar}
                 />
               ),
-              tab: <Tab label="List" icon="fa-th-list" />,
+              tab: <Tab label="Wish" icon="fa-th-list" />,
             },
           ]}
         />

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Page, Button } from "react-onsenui";
-import ListItems from "./ListItems";
-import ListForm from "./ListForm";
+import WishItems from "./WishItems";
+import WishForm from "./WishForm";
 
-function ListPage({ title, active, tabbar }) {
+function WishPage({ title, active, tabbar }) {
   const [items, setItems] = useState([]);
 
   function addItem(item) {
@@ -14,9 +14,9 @@ function ListPage({ title, active, tabbar }) {
     <Page>
       {title}
       <div className="form--input">
-        <ListForm></ListForm>
+        <WishForm></WishForm>
       </div>
-      <ListItems></ListItems>
+      <WishItems></WishItems>
       <Button modifier="large--cta" disabled>
         Store bought items
       </Button>
@@ -24,4 +24,4 @@ function ListPage({ title, active, tabbar }) {
   );
 }
 
-export default ListPage;
+export default WishPage;
