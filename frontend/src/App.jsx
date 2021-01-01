@@ -1,63 +1,41 @@
 import "./App.css";
-import { Page, Tabbar, Tab, List, ListItem } from "react-onsenui";
-import { useState } from "react";
+import { Page, Tabbar, Tab } from "react-onsenui";
+import StoragePage from "./components/StoragePage";
+import ListPage from "./components/ListPage";
+// import { useState } from "react";
 
-const exmapleData = ["Test 1", "Test 2"];
 function App() {
   return (
     <div className="App">
       <Page>
         <Tabbar
           position="bottom"
+          tabBorder
           renderTabs={(activeIndex, tabbar) => [
             {
               content: (
                 <StoragePage
-                  title="Home"
+                  title="Storage"
                   active={activeIndex === 0}
                   tabbar={tabbar}
                 />
               ),
-              tab: <Tab label="Home" icon="md-home" />,
+              tab: <Tab label="Storage" icon="fa-box" />,
             },
             {
               content: (
                 <ListPage
-                  title="Settings"
+                  title="List"
                   active={activeIndex === 1}
                   tabbar={tabbar}
                 />
               ),
-              tab: <Tab label="Settings" icon="md-settings" />,
+              tab: <Tab label="List" icon="fa-th-list" />,
             },
           ]}
         />
       </Page>
     </div>
-  );
-}
-
-function StoragePage({ title, active, tabbar }) {
-  return (
-    <Page>
-      {title}
-      <List
-        dataSource={exmapleData}
-        renderRow={(row, idx) => <ListItem key={row}>{row}</ListItem>}
-      ></List>
-    </Page>
-  );
-}
-
-function ListPage({ title, active, tabbar }) {
-  return (
-    <Page>
-      {title}
-      <List
-        dataSource={exmapleData}
-        renderRow={(row, idx) => <ListItem key={row}>{row}</ListItem>}
-      ></List>
-    </Page>
   );
 }
 
