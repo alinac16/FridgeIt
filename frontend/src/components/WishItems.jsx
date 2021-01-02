@@ -1,17 +1,19 @@
 import React from "react";
-import { List, ListItem, Button, Checkbox } from "react-onsenui";
+import { List } from "react-onsenui";
+import WishItem from "./WishItem";
 
-function WishItems(items, removeItem, toggleComplete) {
+function WishItems({ items, removeItem, toggleComplete }) {
   return (
-    <List
-      dataSource={items}
-      renderRow={(row, idx) => (
-        <ListItem modifier={idx === 1 ? "longdivider" : null}>
-          <Checkbox />
-          <Button modifier="quiet">Remove</Button>
-        </ListItem>
-      )}
-    />
+    <List>
+      {items.map(item => (
+        <WishItem
+          key={item.id}
+          item={item}
+          removeItem={removeItem}
+          toggleComplete={toggleComplete}
+        />
+      ))}
+    </List>
   );
 }
 
