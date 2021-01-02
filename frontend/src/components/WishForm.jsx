@@ -4,12 +4,20 @@ import { v4 as uuidv4 } from "uuid";
 import "./WishForm.scss";
 
 function WishForm({ addItem }) {
+  var today = new Date(),
+    date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
   const [item, setItem] = useState({
     id: "",
     name: "",
     weight: null,
     bought: false,
-    dateAdded: new Date().getDate(),
+    dateAdded: date,
     dateStored: null,
   });
 

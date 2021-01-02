@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Page, Button } from "react-onsenui";
 import WishItems from "./WishItems";
 import WishForm from "./WishForm";
@@ -7,6 +7,10 @@ import "./WishPage.scss";
 function WishPage({ title, active, tabbar }) {
   const [items, setItems] = useState([]);
   const [storeBtn, setStoreBtn] = useState(true);
+
+  useEffect(() => {
+    maybeEnableBtn(items);
+  }, [items]);
 
   function addItem(item) {
     setItems([item, ...items]);
@@ -17,17 +21,14 @@ function WishPage({ title, active, tabbar }) {
   }
 
   function toggleComplete(id) {
-    setItems(prev => {
-      const newItems = prev.map(item => {
+    setItems(prev =>
+      prev.map(item => {
         if (item.id === id) {
           return { ...item, bought: !item.bought };
         }
         return item;
-      });
-      maybeEnableBtn(newItems);
-
-      return newItems;
-    });
+      })
+    );
   }
 
   // if one or more of the item is checked, enable this button
