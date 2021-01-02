@@ -1,13 +1,14 @@
 import React from "react";
-import { List, ListItem } from "react-onsenui";
+import { List } from "react-onsenui";
+import StorageItem from "./StorageItem";
 
-const example = ["happy", "sad"];
-function StorageItems() {
+function StorageItems({ items, removeItem }) {
   return (
-    <List
-      dataSource={example}
-      renderRow={(row, idx) => <ListItem key={row}>{row}</ListItem>}
-    ></List>
+    <List>
+      {items.map(item => (
+        <StorageItem key={item.id} item={item} removeItem={removeItem} />
+      ))}
+    </List>
   );
 }
 
