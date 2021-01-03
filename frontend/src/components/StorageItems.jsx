@@ -4,7 +4,7 @@ import { useItems } from "../App";
 import StorageItem from "./StorageItem";
 
 function StorageItems({ input }) {
-  const { items, removeItem } = useItems();
+  const { items } = useItems();
 
   return (
     <List>
@@ -12,7 +12,7 @@ function StorageItems({ input }) {
         .filter(item => item.name.toLowerCase().includes(input.toLowerCase()))
         .filter(item => item.dateStored)
         .map(item => (
-          <StorageItem key={item.id} item={item} removeItem={removeItem} />
+          <StorageItem item={item} />
         ))}
     </List>
   );

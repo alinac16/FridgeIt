@@ -10,6 +10,7 @@ function WishItem({ item, toggleComplete, removeItem }) {
   function handleRemove() {
     removeItem(item.id);
   }
+
   return (
     <ListItem>
       <Checkbox checked={item.checked} onChange={handleCheckbox} />
