@@ -3,33 +3,15 @@ import { Page, Button } from "react-onsenui";
 import WishItems from "./WishItems";
 import WishForm from "./WishForm";
 import "./WishPage.scss";
+import { useItems } from "../App";
 
-function WishPage({ title, active, tabbar }) {
-  const [items, setItems] = useState([]);
+function WishPage({ title, toggleComplete }) {
+  const { items, addItem, removeItem } = useItems();
   const [storeBtn, setStoreBtn] = useState(true);
 
   useEffect(() => {
     maybeEnableBtn(items);
   }, [items]);
-
-  function addItem(item) {
-    setItems([item, ...items]);
-  }
-
-  function removeItem(id) {
-    setItems(items.filter(item => item.id !== id));
-  }
-
-  function toggleComplete(id) {
-    setItems(prev =>
-      prev.map(item => {
-        if (item.id === id) {
-          return { ...item, bought: !item.bought };
-        }
-        return item;
-      })
-    );
-  }
 
   // if one or more of the item is checked, enable this button
   function maybeEnableBtn(items) {
@@ -43,7 +25,6 @@ function WishPage({ title, active, tabbar }) {
         <WishForm addItem={addItem}></WishForm>
       </div>
       <WishItems
-        items={items}
         removeItem={removeItem}
         toggleComplete={toggleComplete}
       ></WishItems>

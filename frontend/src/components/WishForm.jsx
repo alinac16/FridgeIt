@@ -23,6 +23,7 @@ function WishForm({ addItem }) {
 
   function handleAdd(event) {
     event.preventDefault();
+
     addItem({ ...item, id: uuidv4() });
     setItem({ ...item, name: "", weight: null });
   }

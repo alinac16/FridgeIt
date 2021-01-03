@@ -1,8 +1,10 @@
 import React from "react";
 import { List } from "react-onsenui";
+import { useItems } from "../App";
 import WishItem from "./WishItem";
 
-function WishItems({ items, removeItem, toggleComplete }) {
+function WishItems({ toggleComplete }) {
+  const { items, removeItem } = useItems();
   return (
     <List>
       {items.map(item => (

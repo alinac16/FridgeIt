@@ -1,16 +1,18 @@
 import React from "react";
 import { ListItem, Button } from "react-onsenui";
 
-function StorageItem({ item, removeItem }) {
+function StorageItem({ key, item, removeItem }) {
   function handleRemove() {
-    removeItem(item.id);
+    removeItem(key);
   }
-
+  console.log(item);
   return (
     <ListItem>
-      {item.name}
-      {item.weight}
-      {item.dateStored}
+      <div>
+        {item.name}
+        {item.weight}
+        {item.dateStored}
+      </div>
       <Button onClick={handleRemove}>Remove</Button>
     </ListItem>
   );
