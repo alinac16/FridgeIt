@@ -6,7 +6,7 @@ import "./WishPage.scss";
 import { useItems } from "../App";
 
 function WishPage({ title, toggleComplete }) {
-  const { items, setItems, addItem, removeItem } = useItems();
+  const { items, setItems } = useItems();
   const [storeBtn, setStoreBtn] = useState(true);
   const date = new Date();
 
@@ -36,12 +36,9 @@ function WishPage({ title, toggleComplete }) {
     <Page>
       {title}
       <div>
-        <WishForm addItem={addItem}></WishForm>
+        <WishForm></WishForm>
       </div>
-      <WishItems
-        removeItem={removeItem}
-        toggleComplete={toggleComplete}
-      ></WishItems>
+      <WishItems toggleComplete={toggleComplete}></WishItems>
       <Button
         modifier="large--cta"
         disabled={storeBtn}
