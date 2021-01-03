@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
-import "./WishForm.scss";
 import { useItems } from "../App";
 
 function WishForm() {

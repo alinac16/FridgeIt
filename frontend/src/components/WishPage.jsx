@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Page, Button } from "react-onsenui";
 import WishItems from "./WishItems";
 import WishForm from "./WishForm";
-import "./WishPage.scss";
 import { useItems } from "../App";
 
 function WishPage({ title, toggleComplete }) {
