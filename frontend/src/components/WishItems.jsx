@@ -7,14 +7,16 @@ function WishItems({ toggleComplete }) {
   const { items, removeItem } = useItems();
   return (
     <List>
-      {items.map(item => (
-        <WishItem
-          key={item.id}
-          item={item}
-          removeItem={removeItem}
-          toggleComplete={toggleComplete}
-        />
-      ))}
+      {items
+        .filter(item => !item.dateStored)
+        .map(item => (
+          <WishItem
+            key={item.id}
+            item={item}
+            removeItem={removeItem}
+            toggleComplete={toggleComplete}
+          />
+        ))}
     </List>
   );
 }

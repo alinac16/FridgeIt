@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
 import "./WishForm.scss";
+import { useItems } from "../App";
 
-function WishForm({ addItem }) {
-  var today = new Date(),
-    date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-
+function WishForm() {
+  const { addItem } = useItems();
+  const date = new Date();
   const [item, setItem] = useState({
     id: "",
     name: "",

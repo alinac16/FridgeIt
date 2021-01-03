@@ -6,8 +6,9 @@ import "./WishPage.scss";
 import { useItems } from "../App";
 
 function WishPage({ title, toggleComplete }) {
-  const { items, addItem, removeItem } = useItems();
+  const { items, setItems, addItem, removeItem } = useItems();
   const [storeBtn, setStoreBtn] = useState(true);
+  const date = new Date();
 
   useEffect(() => {
     maybeEnableBtn(items);
@@ -15,7 +16,20 @@ function WishPage({ title, toggleComplete }) {
 
   // if one or more of the item is checked, enable this button
   function maybeEnableBtn(items) {
-    return setStoreBtn(!items.some(item => item.bought));
+    return setStoreBtn(
+      !items.filter(item => !item.dateStored).some(item => item.bought)
+    );
+  }
+
+  function handleStoreBtn() {
+    setItems(prev =>
+      prev.map(item => {
+        if (item.bought) {
+          return { ...item, dateStored: date };
+        }
+        return item;
+      })
+    );
   }
 
   return (
@@ -28,7 +42,11 @@ function WishPage({ title, toggleComplete }) {
         removeItem={removeItem}
         toggleComplete={toggleComplete}
       ></WishItems>
-      <Button className="storeBtn" modifier="large--cta" disabled={storeBtn}>
+      <Button
+        modifier="large--cta"
+        disabled={storeBtn}
+        onClick={handleStoreBtn}
+      >
         Store bought items
       </Button>
     </Page>

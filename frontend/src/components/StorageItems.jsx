@@ -8,7 +8,7 @@ function StorageItems() {
   return (
     <List>
       {items
-        .filter(item => item.bought)
+        .filter(item => item.dateStored)
         .map(item => (
           <StorageItem key={item.id} item={item} removeItem={removeItem} />
         ))}

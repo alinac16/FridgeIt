@@ -1,5 +1,6 @@
 import React from "react";
 import { ListItem, Button } from "react-onsenui";
+import formatDate from "../helper";
 
 function StorageItem({ key, item, removeItem }) {
   function handleRemove() {
@@ -11,7 +12,7 @@ function StorageItem({ key, item, removeItem }) {
       <div>
         {item.name}
         {item.weight}
-        {item.dateStored}
+        {formatDate(item.dateStored)}
       </div>
       <Button onClick={handleRemove}>Remove</Button>
     </ListItem>

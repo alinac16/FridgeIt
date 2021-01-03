@@ -33,12 +33,12 @@ function App() {
   }
   return (
     <div className="App">
-      <ItemsContext.Provider value={{ items, addItem, removeItem }}>
+      <ItemsContext.Provider value={{ items, setItems, addItem, removeItem }}>
         <Page>
           <Tabbar
             position="bottom"
             tabBorder
-            renderTabs={(activeIndex, tabbar) => [
+            renderTabs={activeIndex => [
               {
                 content: (
                   <StoragePage title="Storage" active={activeIndex === 0} />

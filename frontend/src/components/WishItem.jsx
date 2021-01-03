@@ -1,5 +1,6 @@
 import React from "react";
 import { ListItem, Button, Checkbox } from "react-onsenui";
+import formatDate from "../helper";
 
 function WishItem({ item, toggleComplete, removeItem }) {
   function handleCheckbox() {
@@ -14,7 +15,7 @@ function WishItem({ item, toggleComplete, removeItem }) {
       <Checkbox checked={item.checked} onChange={handleCheckbox} />
       {item.name}
       {item.weight}
-      {item.dateAdded}
+      {formatDate(item.dateAdded)}
       <Button modifier="quiet" onClick={handleRemove}>
         Remove
       </Button>
