@@ -1,1 +1,78 @@
 // anything reusable (buttons, navbars, cards)
+.pageHeader {
+  font-weight: 800;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  height: 36px;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.ons-icon {
+  &.fa-pen {
+    font-size: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-bottom: 20px;
+
+  &__input {
+    &--itemName {
+      width: 50%;
+    }
+    &--weight {
+      width: 15%;
+    }
+  }
+}
+
+// list items
+.list {
+  border-radius: 20px;
+  margin: 20px 0;
+  &-item {
+    background-color: white;
+    align-items: center;
+
+    &__center {
+      justify-content: space-between;
+    }
+    &__name {
+      width: 60%;
+      font-size: 25px;
+    }
+    &__detail {
+      width: 20%;
+      flex-direction: row;
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
+}
+
+.checkbox {
+  transform: scale(0.65);
+}
+
+.button {
+  &--quiet.button {
+    height: 90%;
+  }
+}
+
+//icons
+.fas {
+  &.fa-calendar-day {
+    opacity: 0.35;
+  }
+  &.fa-trash {
+    color: rgb(240, 107, 107);
+    width: min-content;
+  }
+}

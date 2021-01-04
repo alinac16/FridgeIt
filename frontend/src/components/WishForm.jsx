@@ -25,20 +25,36 @@ function WishForm() {
   return (
     <div className="form">
       <Input
+        class="form__input--itemName"
         value={item.name}
         onChange={event => {
           setItem(prev => ({ ...prev, name: event.target.value }));
         }}
-        modifier="material"
+        modifier="transparent"
+        style={{
+          backgroundColor: "#ffffff",
+          borderRadius: 30,
+          paddingLeft: 10,
+          paddingRight: 8,
+          paddingTop: 4,
+        }}
         placeholder="Item Name"
         float
       />
       <Input
+        class="form__input--weight"
         value={item.weight}
         onChange={event => {
           setItem(prev => ({ ...prev, weight: event.target.value }));
         }}
-        modifier="material"
+        modifier="transparent"
+        style={{
+          backgroundColor: "#ffffff",
+          borderRadius: 30,
+          paddingLeft: 10,
+          paddingRight: 8,
+          paddingTop: 4,
+        }}
         placeholder="grams"
         type="number"
         float

@@ -1,12 +1,20 @@
 import React from "react";
-import { SearchInput } from "react-onsenui";
+import { Input } from "react-onsenui";
 
 function StorageSearch({ input, updateInput }) {
   return (
-    <SearchInput
+    <Input
       value={input}
       onChange={e => updateInput(e.target.value)}
-      placeholder="Item Name"
+      placeholder="Search Item"
+      style={{
+        backgroundColor: "#ffffff",
+        borderRadius: 30,
+        paddingLeft: 10,
+        paddingRight: 8,
+        paddingTop: 4,
+        width: 300,
+      }}
     />
   );
 }

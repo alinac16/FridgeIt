@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Page, Button } from "react-onsenui";
+import { Page, Button, Icon } from "react-onsenui";
 import WishItems from "./WishItems";
 import WishForm from "./WishForm";
 import { useItems } from "../App";
@@ -33,10 +33,11 @@ function WishPage({ title, toggleComplete }) {
 
   return (
     <Page>
-      {title}
-      <div>
-        <WishForm></WishForm>
+      <div className="pageHeader">
+        {title}
+        <Icon size="20px" icon="fa-pen" />
       </div>
+      <WishForm></WishForm>
       <WishItems toggleComplete={toggleComplete}></WishItems>
       <Button
         modifier="large--cta"

@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <ItemsContext.Provider value={{ items, setItems, addItem, removeItem }}>
-        <Page className="mainPage">
+        <Page>
           <Tabbar
             position="bottom"
             tabBorder
