@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Page } from "react-onsenui";
+// import { Page } from "react-onsenui";
 import StorageItems from "./StorageItems";
 import StorageSearch from "./StorageSearch";
 
@@ -10,12 +10,12 @@ function StoragePage({ title }) {
     setInput(input);
   }
   return (
-    <Page className="page__search">
+    <div className="storagePage">
       {title}
       <br />
       <StorageSearch input={input} updateInput={updateInput} />
       <StorageItems input={input} />
-    </Page>
+    </div>
   );
 }
 
