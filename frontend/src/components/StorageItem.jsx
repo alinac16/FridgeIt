@@ -5,10 +5,11 @@ import { useItems } from "../App";
 
 function StorageItem({ item }) {
   const { removeItem } = useItems();
+
   function handleRemove() {
     removeItem(item.id);
   }
-  console.log(item);
+
   return (
     <ListItem>
       <Button modifier="quiet" onClick={handleRemove}>
