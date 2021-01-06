@@ -1,6 +1,7 @@
 import React from "react";
 import { ListItem, Button, Checkbox } from "react-onsenui";
 import formatDate from "../helper";
+import { useSwipeable } from "react-swipeable";
 
 function WishItem({ item, toggleComplete, removeItem }) {
   function handleCheckbox() {
@@ -11,12 +12,19 @@ function WishItem({ item, toggleComplete, removeItem }) {
     removeItem(item.id);
   }
 
+  // const handlers = useSwipeable({
+  //   onSwipedLeft: () => {
+  //     return <Button modifier="quiet" onClick={handleRemove}>
+  //   <i class="fas fa-trash"></i>
+  // </Button>},
+  //   onSwipedRight: () => slide(PREV),
+  //   preventDefaultTouchmoveEvent: true,
+  //   trackMouse: true
+  // });
+
   return (
     <ListItem>
       <Checkbox checked={item.checked} onChange={handleCheckbox} />
-      <Button modifier="quiet" onClick={handleRemove}>
-        <i class="fas fa-trash"></i>
-      </Button>
       <div className="list-item__name">{item.name}</div>
       <div className="list-item__detail">
         <div className="list-item__detail--weight">{item.weight} g</div>

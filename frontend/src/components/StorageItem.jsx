@@ -11,12 +11,16 @@ function StorageItem({ item }) {
   console.log(item);
   return (
     <ListItem>
-      <div>
-        {item.name}
-        {item.weight}
-        {formatDate(item.dateStored)}
+      <Button modifier="quiet" onClick={handleRemove}>
+        <i class="fas fa-trash"></i>
+      </Button>
+      <div className="list-item__name">{item.name}</div>
+      <div className="list-item__detail">
+        <div className="list-item__detail--weight">{item.weight} g</div>
+        <div className="list-item__detail--date">
+          <i class="fas fa-calendar-day"></i> {formatDate(item.dateAdded)}
+        </div>
       </div>
-      <Button onClick={handleRemove}>Remove</Button>
     </ListItem>
   );
 }
