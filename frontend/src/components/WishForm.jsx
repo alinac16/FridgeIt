@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
 import { useItems } from "../App";
 import WishAlert from "./WishAlert";
 
 function WishForm() {
-  const { addItem } = useItems();
+  const { items, addItem } = useItems();
   const date = new Date();
   const [item, setItem] = useState({
     id: "",
@@ -16,27 +16,40 @@ function WishForm() {
     dateStored: null,
   });
 
+  const [addBtn, setAddBtn] = useState(true);
+  console.log(addBtn);
+
+  useEffect(() => {
+    maybeEnableBtn(item);
+  }, [item]);
+
+  function maybeEnableBtn(item) {
+    setAddBtn(item.name === "" || item.weight === null);
+  }
+
+  function handleAddBtn() {
+    if (items.some(i => i.name === item.name)) {
+      setShowAlert(true);
+    } else {
+      handleAdd();
+    }
+  }
+
+  function handleAdd(event) {
+    addItem({ ...item, id: uuidv4() });
+    setItem({ ...item, name: "", weight: null });
+  }
+
   const [showAlert, setShowAlert] = useState(false);
 
   function handleCancel() {
     setShowAlert(prev => !prev);
   }
 
-  function isValid() {
-    if (item.name !== "" && item.weight) {
-      setShowAlert(prev => false);
-      return showAlert;
-    }
-    setShowAlert(prev => true);
-    return showAlert;
-  }
+  // function isValid(item) {
 
-  function handleAdd(event) {
-    event.preventDefault();
-    isValid();
-    addItem({ ...item, id: uuidv4() });
-    setItem({ ...item, name: "", weight: null });
-  }
+  //   }
+  // }
 
   return (
     <div className="form">
@@ -76,7 +89,7 @@ function WishForm() {
         type="number"
         float
       />
-      <Button modifier="cta" onClick={handleAdd}>
+      <Button modifier="cta" disabled={addBtn} onClick={handleAddBtn}>
         Add
       </Button>
     </div>

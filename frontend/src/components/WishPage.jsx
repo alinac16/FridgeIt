@@ -15,7 +15,7 @@ function WishPage({ title, toggleComplete }) {
 
   // if one or more of the item is checked, enable this button
   function maybeEnableBtn(items) {
-    return setStoreBtn(
+    setStoreBtn(
       !items.filter(item => !item.dateStored).some(item => item.bought)
     );
   }
