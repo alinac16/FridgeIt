@@ -18,14 +18,14 @@ module.exports = app => {
   // Update bought Products
   router.put("/store", products.store);
 
+  // Delete a Product with id
+  router.delete("/:id", products.delete);
+
   // // Update a Product with id
   // router.put("/:id", products.update);
 
   // // Retrieve a single Product with id
   // router.get("/:id", products.findOne);
-
-  // // Delete a Product with id
-  // router.delete("/:id", products.delete);
 
   // // Create a new Product
   // router.delete("/", products.deleteAll);
