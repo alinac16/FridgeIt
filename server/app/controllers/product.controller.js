@@ -1,7 +1,7 @@
 const db = require("../models");
 const Product = db.products;
 const Op = require("sequelize").Op;
-var Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
 // Create and Save a new Product
 exports.create = (req, res) => {
@@ -61,51 +61,15 @@ exports.findAllUnstored = (req, res) => {
     });
 };
 
-// Update Product by the id in the request
-exports.update = (req, res) => {
-  const id = req.params.id;
-
-  Tutorial.update(req.body, {
-    where: { id: id },
-  })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Tutorial was updated successfully.",
-        });
-      } else {
-        res.send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`,
-        });
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating Tutorial with id=" + id,
-      });
-    });
-};
-
 // Update all Products bought to storage
-exports.update = (req, res) => {
-  Product.update(
-    { dateStored: Sequelize.literal("CURRENT_TIMESTAMP") },
-    { where: { bought: true } }
-  )
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Products was updated successfully.",
-        });
-      } else {
-        res.send({
-          message: `Cannot update Products. Maybe Product was not found or req.body is empty!`,
-        });
-      }
-    })
+exports.store = (req, res) => {
+  const ids = JSON.parse(req.body.ids);
+
+  Product.update({ dateStored: Sequelize.fn("NOW") }, { where: { id: ids } })
+    .then(data => res.send(data))
     .catch(err => {
       res.status(500).send({
-        message: err.message || "Error updating Product with id=" + id,
+        message: err.message || "Failed to find all unstored products.",
       });
     });
 };

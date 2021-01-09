@@ -16,7 +16,7 @@ module.exports = app => {
   router.get("/unstored", products.findAllUnstored);
 
   // Update bought Products
-  router.put("/store", products.update);
+  router.put("/store", products.store);
 
   // // Update a Product with id
   // router.put("/:id", products.update);

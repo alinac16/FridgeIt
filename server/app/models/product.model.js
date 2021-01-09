@@ -10,10 +10,6 @@ module.exports = (sequelize, Sequelize) => {
 
       validate: { min: 0 },
     },
-    bought: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: false,
-    },
     dateStored: {
       type: "TIMESTAMP",
       allowNull: true,
