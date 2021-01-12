@@ -9,11 +9,11 @@ module.exports = app => {
   // Retrieve all Products
   router.get("/", products.findAll);
 
-  // Retrieve all stored Products
-  router.get("/stored", products.findAllStored);
+  // // Retrieve all stored Products
+  // router.get("/stored", products.findAllStored);
 
-  // Retrieve all unstored Products
-  router.get("/unstored", products.findAllUnstored);
+  // // Retrieve all unstored Products
+  // router.get("/unstored", products.findAllUnstored);
 
   // Update bought Products
   router.put("/store", products.store);

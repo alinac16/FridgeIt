@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AlertDialog, Button } from "react-onsenui";
 
 function WishAlert({ alert, handleCancel }) {
-  console.log(alert);
+  console.log("alert is " + alert);
   return (
     // alert for repeated items
     <AlertDialog isOpen={alert} onCancel={handleCancel} cancelable>

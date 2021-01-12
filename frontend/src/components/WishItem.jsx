@@ -1,5 +1,6 @@
 import React from "react";
 import { ListItem, Button, Checkbox } from "react-onsenui";
+import { deleteItem } from "../api";
 import formatDate from "../helper";
 // import { useSwipeable } from "react-swipeable";
 
@@ -8,7 +9,7 @@ function WishItem({ item, toggleComplete, removeItem }) {
     toggleComplete(item.id);
   }
 
-  function handleRemove() {
+  async function handleRemove(event) {
     removeItem(item.id);
   }
 
@@ -30,7 +31,7 @@ function WishItem({ item, toggleComplete, removeItem }) {
       <div className="list-item__detail">
         <div className="list-item__detail--weight">{item.weight} g</div>
         <div className="list-item__detail--date">
-          <i class="fas fa-calendar-day"></i> {formatDate(item.dateAdded)}
+          <i class="fas fa-calendar-day"></i> {formatDate(item.createdAt)}
         </div>
       </div>
     </ListItem>

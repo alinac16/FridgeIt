@@ -19,7 +19,7 @@ function StorageItem({ item }) {
       <div className="list-item__detail">
         <div className="list-item__detail--weight">{item.weight} g</div>
         <div className="list-item__detail--date">
-          <i class="fas fa-calendar-day"></i> {formatDate(item.dateAdded)}
+          <i class="fas fa-calendar-day"></i> {formatDate(item.createdAt)}
         </div>
       </div>
     </ListItem>

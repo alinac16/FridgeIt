@@ -1,3 +1,4 @@
+// import "dotenv/config";
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -6,9 +7,7 @@ const app = express();
 
 const db = require("./app/models");
 
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
+var corsOptions = {};
 
 app.use(cors(corsOptions));
 

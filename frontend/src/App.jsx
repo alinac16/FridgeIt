@@ -38,6 +38,7 @@ function App() {
           <Tabbar
             position="bottom"
             tabBorder
+            index={0}
             renderTabs={activeIndex => [
               {
                 content: (

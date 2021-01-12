@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
+import { createItem } from "../api";
 import { useItems } from "../App";
 import WishAlert from "./WishAlert";
 
-function WishForm() {
-  const { items, addItem } = useItems();
+function WishForm({ items, addItem }) {
+  // const { items } = useItems();
   const date = new Date();
   const [item, setItem] = useState({
-    id: "",
     name: "",
     weight: null,
     bought: false,
-    dateAdded: date,
-    dateStored: null,
   });
 
   const [addBtn, setAddBtn] = useState(true);
-  console.log(addBtn);
 
   useEffect(() => {
     maybeEnableBtn(item);
@@ -35,9 +32,10 @@ function WishForm() {
     }
   }
 
-  function handleAdd(event) {
-    addItem({ ...item, id: uuidv4() });
-    setItem({ ...item, name: "", weight: null });
+  async function handleAdd(event) {
+    addItem(item);
+    // addItem({ ...item, id: uuidv4() });
+    // setItem({ ...item, name: "", weight: null });
   }
 
   const [showAlert, setShowAlert] = useState(false);

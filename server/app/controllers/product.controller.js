@@ -30,36 +30,39 @@ exports.create = (req, res) => {
 
 // Retrieve all Products from the database.
 exports.findAll = (req, res) => {
-  Product.findAll()
+  const stored = req.query.stored && JSON.parse(req.query.stored);
+  const query = stored ? { [Op.ne]: null } : null;
+
+  Product.findAll({ where: { dateStored: query } })
     .then(data => res.send(data))
     .catch(err => {
       res.status(500).send({
-        message: err.message || "Failed to find all products.",
+        message: err.message || "Failed to find products.",
       });
     });
 };
 
 // Retrieve all stored Products from the database.
-exports.findAllStored = (req, res) => {
-  Product.findAll({ where: { dateStored: { [Op.ne]: null } } })
-    .then(data => res.send(data))
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Failed to find all stored products.",
-      });
-    });
-};
+// exports.findAllStored = (req, res) => {
+//   Product.findAll({ where: { dateStored: { [Op.ne]: null } } })
+//     .then(data => res.send(data))
+//     .catch(err => {
+//       res.status(500).send({
+//         message: err.message || "Failed to find all stored products.",
+//       });
+//     });
+// };
 
-// Retrieve all unstored Products from the database.
-exports.findAllUnstored = (req, res) => {
-  Product.findAll({ where: { dateStored: null } })
-    .then(data => res.send(data))
-    .catch(err => {
-      res.status(500).send({
-        message: err.message || "Failed to find all unstored products.",
-      });
-    });
-};
+// // Retrieve all unstored Products from the database.
+// exports.findAllUnstored = (req, res) => {
+//   Product.findAll({ where: { dateStored: null } })
+//     .then(data => res.send(data))
+//     .catch(err => {
+//       res.status(500).send({
+//         message: err.message || "Failed to find all unstored products.",
+//       });
+//     });
+// };
 
 // Update all Products bought to storage
 exports.store = (req, res) => {
@@ -83,12 +86,12 @@ exports.delete = (req, res) => {
   })
     .then(num => {
       res.send({
-        message: "Tutorial was deleted successfully!",
+        message: "Product was deleted successfully!",
       });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Tutorial with id=" + id,
+        message: "Could not delete Product with id=" + id,
       });
     });
 };
