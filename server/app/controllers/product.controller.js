@@ -66,8 +66,8 @@ exports.findAll = (req, res) => {
 
 // Update all Products bought to storage
 exports.store = (req, res) => {
-  const ids = JSON.parse(req.body.ids);
-
+  console.log("reqbody is ", req.body.id);
+  const ids = JSON.parse(req.body.id);
   Product.update({ dateStored: Sequelize.fn("NOW") }, { where: { id: ids } })
     .then(data => res.send(data))
     .catch(err => {
@@ -76,6 +76,9 @@ exports.store = (req, res) => {
       });
     });
 };
+
+// POSTMAN-WORKS req.body = { id: '[68,2]' }
+// APP-NOT WORKS roq.body = [68,2]
 
 // Delete a Product with the specified id in the request
 exports.delete = (req, res) => {

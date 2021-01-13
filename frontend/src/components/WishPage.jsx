@@ -5,7 +5,7 @@ import WishForm from "./WishForm";
 import { useFetch } from "../hooks/useFetch";
 import { createItem, deleteItem, storeItem } from "../api";
 
-function WishPage({ title, toggleComplete }) {
+function WishPage({ title }) {
   const { response, error } = useFetch("http://localhost:8080/api/products");
   const [storeBtn, setStoreBtn] = useState(true);
   const [items, setItems] = useState([]);
@@ -32,24 +32,30 @@ function WishPage({ title, toggleComplete }) {
     setItems(items.filter(item => item.id !== id));
   }
 
+  function toggleComplete(id) {
+    setItems(prev =>
+      prev.map(item => {
+        if (item.id === id) {
+          return { ...item, bought: !item.bought };
+        }
+        return item;
+      })
+    );
+  }
+
   // if one or more of the item is checked, enable this button
   function maybeEnableBtn(items) {
     setStoreBtn(
-      !items.filter(item => !item.dateStored).some(item => item.bought)
+      !items.some(item => item.bought)
+      // !items.filter(item => !item.dateStored).some(item => item.bought)
     );
   }
 
   function handleStoreBtn() {
-    storeItem(items);
-    // setItems(prev =>
-    //   prev.map(item => {
-    //     if (item.bought) {
-    //       return { ...item, dateStored: date };
-    //     }
-    //     return item;
-    //   })
-    // );
-    // console.log();
+    // store only item bought
+    const toStoreIds = items.filter(item => item.bought).map(item => item.id);
+    storeItem(toStoreIds);
+    setItems(prev => prev.filter(item => !toStoreIds.includes(item.id)));
   }
 
   return (

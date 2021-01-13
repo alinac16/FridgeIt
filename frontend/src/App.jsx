@@ -21,16 +21,6 @@ function App() {
     setItems(items.filter(item => item.id !== id));
   }
 
-  function toggleComplete(id) {
-    setItems(prev =>
-      prev.map(item => {
-        if (item.id === id) {
-          return { ...item, bought: !item.bought };
-        }
-        return item;
-      })
-    );
-  }
   return (
     <div className="App">
       <ItemsContext.Provider value={{ items, setItems, addItem, removeItem }}>
@@ -47,13 +37,7 @@ function App() {
                 tab: <Tab label="Storage" icon="fa-box" />,
               },
               {
-                content: (
-                  <WishPage
-                    title="Wish"
-                    toggleComplete={toggleComplete}
-                    active={activeIndex === 1}
-                  />
-                ),
+                content: <WishPage title="Wish" active={activeIndex === 1} />,
                 tab: <Tab label="Wish" icon="fa-th-list" />,
               },
             ]}
