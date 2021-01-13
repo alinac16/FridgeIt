@@ -20,6 +20,10 @@ function StoragePage({ title, active }) {
     response && setItems(response);
   }, [response]);
 
+  // useEffect(() => {
+  //   input && setItems(prev => prev.filter(item => item.name.includes(input)));
+  // }, [input]);
+
   if (!response) {
     return (
       <Page>
@@ -30,11 +34,16 @@ function StoragePage({ title, active }) {
 
   function updateInput(input) {
     setInput(input);
+    filterItem();
+  }
+
+  function filterItem() {
+    setItems(prev => prev.filter(item => item.name.includes(input)));
   }
 
   async function removeItem(id) {
     await deleteItem(id);
-    setItems(items.filter(item => item.id !== id));
+    setItems(prev => prev.filter(item => item.id !== id));
   }
   return (
     <Page>

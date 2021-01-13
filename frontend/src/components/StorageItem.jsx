@@ -1,7 +1,6 @@
 import React from "react";
 import { ListItem, Button } from "react-onsenui";
 import formatDate from "../helper";
-import { useItems } from "../App";
 
 function StorageItem({ item, removeItem }) {
   async function handleRemove() {

@@ -5,12 +5,14 @@ import { createItem } from "../api";
 import WishAlert from "./WishAlert";
 
 function WishForm({ items, addItem }) {
-  const date = new Date();
-  const [item, setItem] = useState({
+  // TO-DO!!! refresh form once hit add
+  const emptyItem = {
     name: "",
     weight: null,
     bought: false,
-  });
+  };
+
+  const [item, setItem] = useState(emptyItem);
 
   const [addBtn, setAddBtn] = useState(true);
 
@@ -32,6 +34,7 @@ function WishForm({ items, addItem }) {
 
   async function handleAdd(event) {
     addItem(item);
+    setItem(emptyItem);
     // addItem({ ...item, id: uuidv4() });
     // setItem({ ...item, name: "", weight: null });
   }
@@ -65,7 +68,6 @@ function WishForm({ items, addItem }) {
           paddingTop: 4,
         }}
         placeholder="Item Name"
-        float
       />
       <Input
         class="form__input--weight"
@@ -83,7 +85,6 @@ function WishForm({ items, addItem }) {
         }}
         placeholder="grams"
         type="number"
-        float
       />
       <Button modifier="cta" disabled={addBtn} onClick={handleAddBtn}>
         Add
