@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Input, Button } from "react-onsenui";
 import { v4 as uuidv4 } from "uuid";
 import { createItem } from "../api";
-import { useItems } from "../App";
 import WishAlert from "./WishAlert";
 
 function WishForm({ items, addItem }) {
-  // const { items } = useItems();
   const date = new Date();
   const [item, setItem] = useState({
     name: "",

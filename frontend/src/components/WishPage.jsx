@@ -5,8 +5,11 @@ import WishForm from "./WishForm";
 import { useFetch } from "../hooks/useFetch";
 import { createItem, deleteItem, storeItem } from "../api";
 
-function WishPage({ title }) {
-  const { response, error } = useFetch("http://localhost:8080/api/products");
+function WishPage({ title, active }) {
+  const { response, error } = useFetch(
+    { url: "http://localhost:8080/api/products" },
+    active
+  );
   const [storeBtn, setStoreBtn] = useState(true);
   const [items, setItems] = useState([]);
 
@@ -19,7 +22,7 @@ function WishPage({ title }) {
   }, [items]);
 
   if (!response) {
-    return <div>...Loading....</div>;
+    return <Page>...Loading....</Page>;
   }
 
   async function addItem(item) {

@@ -3,10 +3,8 @@ import { ListItem, Button } from "react-onsenui";
 import formatDate from "../helper";
 import { useItems } from "../App";
 
-function StorageItem({ item }) {
-  const { removeItem } = useItems();
-
-  function handleRemove() {
+function StorageItem({ item, removeItem }) {
+  async function handleRemove() {
     removeItem(item.id);
   }
 

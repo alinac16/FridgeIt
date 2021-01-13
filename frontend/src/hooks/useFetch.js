@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export const useFetch = (url, options) => {
+export const useFetch = ({ url, options }, dep) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {

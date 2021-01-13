@@ -10,8 +10,6 @@ export async function createItem(data) {
 }
 
 export async function storeItem(data) {
-  // [id1, id2, id3]
-  //
   const response = await fetch("http://localhost:8080/api/products/store", {
     method: "PUT",
     headers: {

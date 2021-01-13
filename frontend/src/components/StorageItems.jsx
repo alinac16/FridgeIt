@@ -2,11 +2,11 @@ import React from "react";
 import { List } from "react-onsenui";
 import StorageItem from "./StorageItem";
 
-function StorageItems({ items, input }) {
+function StorageItems({ items, removeItem }) {
   return (
     <List>
       {items.map(item => (
-        <StorageItem item={item} />
+        <StorageItem item={item} removeItem={removeItem} />
       ))}
     </List>
   );
