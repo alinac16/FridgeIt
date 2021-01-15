@@ -33,7 +33,13 @@ exports.findAll = (req, res) => {
   const stored = req.query.stored && JSON.parse(req.query.stored);
   const query = stored ? { [Op.ne]: null } : null;
 
-  Product.findAll({ where: { dateStored: query } })
+  const name = { [Op.like]: "%" + req.query.name + "%" };
+
+  const whereStatement = { dateStored: query };
+
+  if (req.query.name) whereStatement.name = name;
+
+  Product.findAll({ where: whereStatement })
     .then(data => res.send(data))
     .catch(err => {
       res.status(500).send({

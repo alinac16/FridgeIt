@@ -6,23 +6,19 @@ import StorageItems from "./StorageItems";
 import StorageSearch from "./StorageSearch";
 
 // immediate reflection of item stored ==> make another fetch request when you switch tabs
-// delete button not working
+// search bar refactoring, will not search until cursor clicks
 
 function StoragePage({ title, active }) {
+  const [input, setInput] = useState("");
   const { response, error } = useFetch(
-    { url: "http://localhost:8080/api/products/?stored=true" },
+    { url: `http://localhost:8080/api/products/?stored=true&name=${input}` },
     active
   );
   const [items, setItems] = useState([]);
-  const [input, setInput] = useState("");
 
   useEffect(() => {
     response && setItems(response);
   }, [response]);
-
-  // useEffect(() => {
-  //   input && setItems(prev => prev.filter(item => item.name.includes(input)));
-  // }, [input]);
 
   if (!response) {
     return (
@@ -32,14 +28,12 @@ function StoragePage({ title, active }) {
     );
   }
 
-  function updateInput(input) {
-    setInput(input);
-    filterItem();
+  function updateInput(inputUpdate) {
+    setInput(inputUpdate);
   }
-
-  function filterItem() {
-    setItems(prev => prev.filter(item => item.name.includes(input)));
-  }
+  // function filterItem() {
+  //   setItems(prev => prev.filter(item => item.name.includes(input)));
+  // }
 
   async function removeItem(id) {
     await deleteItem(id);

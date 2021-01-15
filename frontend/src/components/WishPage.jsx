@@ -55,7 +55,6 @@ function WishPage({ title, active }) {
   }
 
   function handleStoreBtn() {
-    // store only item bought
     const toStoreIds = items.filter(item => item.bought).map(item => item.id);
     storeItem(toStoreIds);
     setItems(prev => prev.filter(item => !toStoreIds.includes(item.id)));
